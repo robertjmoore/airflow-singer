@@ -16,10 +16,6 @@ default_args = {
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
-    # 'queue': 'bash_queue',
-    # 'pool': 'backfill',
-    # 'priority_weight': 10,
-    # 'end_date': datetime(2016, 1, 1),
 }
 
 scriptpath = '~/Dropbox/airflow-singer/scripts/'
@@ -28,7 +24,6 @@ base_path = '/tmp/singer-sync/'
 dag = DAG(
     'salesforce-singer-sync', default_args=default_args, schedule_interval=timedelta(1))
 
-# t1, t2 and t3 are examples of tasks created by instantiating operators
 t_download = BashOperator(
     task_id='download_today',
     bash_command='python3 ' + scriptpath + 'downloadtoday.py "{{ execution_date }}"',

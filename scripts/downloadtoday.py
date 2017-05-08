@@ -10,7 +10,7 @@ if not os.path.exists(base_path):
 	print("   creating base directory " + base_path)
 	os.makedirs(base_path)
 
-bucketname = 'magento-bi'
+bucketname = 'my-bucket'
 s3 = boto3.resource('s3')
 bucket = s3.Bucket(bucketname)
 tables = ['account', 'lead', 'opportunity', 'recordtype', 'task', 'user']
